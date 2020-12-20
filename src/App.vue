@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar app color="teal" dark>
+      <img width="60" src="./assets/logo.png" alt="" />
+      <v-spacer></v-spacer>
+    </v-app-bar>
+
+    <v-main>
+      <HelloWorld />
+    </v-main>
+    <v-footer color="teal">
+      <p class="py-2 white--text text-center">
+        {{ new Date().getFullYear() }} — <strong>Alabo Excel</strong>
+      </p>
+      <v-spacer></v-spacer>
+      <img width="60" src="./assets/logo.png" alt="" />
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    HelloWorld,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>

@@ -1,58 +1,58 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+  <v-container>
+    <v-row class="text-center" justify="center">
+      <v-col cols="10">
+        <v-text-field label="Wish title" v-model="wishTitle"></v-text-field>
+        <v-textarea
+          outlined
+          name="input-7-4"
+          label="Enter your wish"
+          v-model="wish"
+        ></v-textarea>
+      </v-col>
+      <v-col cols="10">
+        <v-card id="output" class="mx-auto mt-1" max-width="500" outlined>
+          <v-list-item three-line>
+            <v-list-item-content>
+              <div class="overline mb-4">Best Wishes</div>
+              <v-list-item-title class="headline mb-1">
+                {{ this.wishTitle }}
+              </v-list-item-title>
+              <v-list-item-subtitle>{{ this.wish }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
+          <div class="text-center mt-3 p-5">
+            <p>Powered By Wish</p>
+          </div>
+        </v-card>
+        <v-btn v-for="icon in icons" :key="icon" class="mx-4 mt-3 teal--text" icon>
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+  name: "HelloWorld",
+  data() {
+    return {
+      wish: "on your special day i wish you gods blessings and prosperity",
+      wishTitle: "Happy birthday",
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-whatsapp", "mdi-instagram"],
+    };
+  },
+  methods: {
+    shareToFacebook() {
+      var output = document.getElementById('output')
+      let shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${output}`;
+      window.open(shareUrl, "NewWindow", );
+    },
+  },
+};
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style></style>
